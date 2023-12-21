@@ -1,0 +1,11 @@
+.menu .active {
+    color: #00BF63 !important;
+    background: none !important;
+}
+
+.menu a:hover,
+.menu a:active,
+.menu a:focus {
+    background: none !important;
+    color: #00BF63 !important;
+}

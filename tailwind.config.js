@@ -9,7 +9,8 @@ export default {
       'primary-green': '#00BF63',
       'secondary-green': '#00BF63',
       'primary-bg': '#EBECF0',
-      'primary-text': '#161616'
+      'primary-text': '#161616',
+      'white': '#FFFFFF'
     },
     extend: {},
   },
