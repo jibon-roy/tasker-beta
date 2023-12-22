@@ -3,8 +3,16 @@ import { Link } from "react-router-dom";
 import useAuth from "../../utils/hooks/useAuth";
 
 const Login = () => {
-    const data = useAuth()
-    console.log(data)
+    const { googleUser, loginUser } = useAuth()
+    // console.log(data)
+
+    const handleLogin = (e) => {
+        const form = e.currentTarget
+        const email = form.email.value
+        const password = form.password.value
+
+        loginUser(email, password)
+    }
     return (
         <div className="min-h-screen flex justify-center bg-secondary-green">
             <div>
@@ -16,7 +24,7 @@ const Login = () => {
                     </div>
                     <div className="lg:w-2/6 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
                         <h2 className="text-primary-green text-2xl text-center font-medium title-font mb-5">Account Login</h2>
-                        <form action="">
+                        <form onSubmit={handleLogin}>
                             <div className="relative mb-4">
                                 <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
                                 <input required autoComplete="on" type="email" id="email" name="email" placeholder="example@mail.com" className="w-full bg-primary-bg rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-primary-green text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -30,7 +38,7 @@ const Login = () => {
                         </form>
                         <p className="text-base text-gray-500 mt-3">Do not have an account? <Link className="text-primary-green font-semibold" to="/register">Register</Link></p>
                         <div>
-                            <button className="w-full bg-primary-bg btn text-primary-text flex justify-center hover:bg-gray-300 border-0 py-2 px-8 focus:outline-none rounded gap-2 my-5 text-lg">Continue with<FcGoogle className="text-3xl"></FcGoogle></button>
+                            <button onClick={googleUser} className="w-full bg-primary-bg btn text-primary-text flex justify-center hover:bg-gray-300 border-0 py-2 px-8 focus:outline-none rounded gap-2 my-5 text-lg">Continue with<FcGoogle className="text-3xl"></FcGoogle></button>
                         </div>
                     </div>
                 </div>

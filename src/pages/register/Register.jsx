@@ -1,7 +1,47 @@
+import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import useAuth from "../../utils/hooks/useAuth";
 
 const Register = () => {
+    const [passwordError, setPasswordError] = useState('');
+
+    const { googleUser, newEmailPasswordUser } = useAuth()
+
+    const registerSubmit = (e) => {
+        e.preventDefault();
+        const form = e.currentTarget
+        const name = form.name.value
+        const email = form.email.value
+        const password = form.password.value
+        if (password.length < 6) {
+            setPasswordError('Password is less then 6 Character.');
+            return;
+        } else if (!/[A-Z]/.test(password)) {
+            setPasswordError('Password does\'nt have a capital letter.')
+            return;
+        } else if (!/[@#$%^&+=]/.test(password)) {
+            setPasswordError('Password does\'nt have a special character.')
+            return;
+        } else {
+            setPasswordError('');
+        }
+
+        const newUser = { name, email, password }
+
+        newEmailPasswordUser(email, password)
+            .then(result => {
+                if (result.user) {
+                    // Do something
+                }
+            })
+            .catch(err => {
+                if (err) {
+                    // do something 
+                }
+            })
+    }
+
     return (
         <div className="min-h-screen flex justify-center bg-secondary-green">
             <div>
@@ -13,7 +53,7 @@ const Register = () => {
                     </div>
                     <div className="lg:w-2/6 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
                         <h2 className="text-primary-green text-2xl text-center font-medium title-font mb-5">Register</h2>
-                        <form action="">
+                        <form onSubmit={registerSubmit}>
                             <div className="relative mb-4">
                                 <label htmlFor="full-name" className="leading-7 text-sm text-gray-600">Full Name</label>
                                 <input required autoComplete="on" type="text" id="full-name" name="full-name" placeholder="Jhon Doe" className="w-full bg-primary-bg rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-primary-green text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -26,12 +66,15 @@ const Register = () => {
                                 <label htmlFor="password" className="leading-7 text-sm text-gray-600">Password</label>
                                 <input required autoComplete="on" type="password" id="password" name="password" className="w-full bg-primary-bg rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-primary-green text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                             </div>
+                            <label className="label">
+                                <div className="text-base text-[red]">{passwordError}</div>
+                            </label>
                             <button className="text-white w-full bg-primary-green border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">Register</button>
 
                         </form>
                         <p className="text-base text-gray-500 mt-3">Already have an account? <Link className="text-primary-green font-semibold" to="/login">Login</Link></p>
                         <div>
-                            <button className="w-full bg-primary-bg btn text-primary-text flex justify-center hover:bg-gray-300 border-0 py-2 px-8 focus:outline-none rounded gap-2 my-5 text-lg">Continue with<FcGoogle className="text-3xl"></FcGoogle></button>
+                            <button onClick={googleUser} className="w-full bg-primary-bg btn text-primary-text flex justify-center hover:bg-gray-300 border-0 py-2 px-8 focus:outline-none rounded gap-2 my-5 text-lg">Continue with<FcGoogle className="text-3xl"></FcGoogle></button>
                         </div>
                     </div>
                 </div>
