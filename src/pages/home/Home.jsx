@@ -1,10 +1,17 @@
+import Banner from "./banner/Banner";
+import WhoCanUse from "./whoCanUse/WhoCanUse";
 
 
 const Home = () => {
     return (
-        <div>
-
-        </div>
+        <>
+            <section>
+                <Banner></Banner>
+            </section>
+            <section>
+                <WhoCanUse></WhoCanUse>
+            </section>
+        </>
     );
 };
 

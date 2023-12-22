@@ -8,14 +8,14 @@ const NavigationBar = () => {
         <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
         <li><NavLink to='/support'>Support</NavLink></li>
         <li><NavLink to='/login'>Login</NavLink></li>
-        <li><NavLink to='/register'>Register</NavLink></li>
+        <li><NavLink to='/register'><div className='px-3 py-1 bg-primary-green text-white hover:bg-secondary-green'>Register</div></NavLink></li>
     </>
 
     return (
         <div className="drawer">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
-                <div className="w-full navbar bg-white shadow-md mb-3">
+                <div className="w-full navbar bg-white shadow-md">
                     <div className="container mx-auto">
                         <div className="flex justify-between w-full">
                             <div className="flex-1 px-2 mx-2">

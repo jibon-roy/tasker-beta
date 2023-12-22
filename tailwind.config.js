@@ -8,7 +8,7 @@ export default {
     colors: {
       'primary-green': '#00BF63',
       'secondary-green': '#00BF63',
-      'primary-bg': '#EBECF0',
+      'primary-bg': '#EBF0EC',
       'primary-text': '#161616',
       'white': '#FFFFFF'
     },
