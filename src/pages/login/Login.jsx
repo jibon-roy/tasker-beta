@@ -1,7 +1,10 @@
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import useAuth from "../../utils/hooks/useAuth";
 
 const Login = () => {
+    const data = useAuth()
+    console.log(data)
     return (
         <div className="min-h-screen flex justify-center bg-secondary-green">
             <div>
