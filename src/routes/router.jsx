@@ -7,6 +7,7 @@ import PublicRoute from "./PublicRoute";
 import PrivetRoute from "./PrivetRoute";
 import DashboardLayout from "../layouts/dashboard/DashboardLayout";
 import Dashboard from "../pages/dashboard/Dashboard";
+import AddTask from "../pages/dashboard/addTask/AddTask";
 
 
 const router = createBrowserRouter([
@@ -27,7 +28,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/home',
                 element: <Dashboard></Dashboard>
-            }
+            },
+            {
+                path: '/dashboard/add',
+                element: <AddTask></AddTask>
+            },
         ]
     },
     {

@@ -8,7 +8,7 @@ export default {
   theme: {
     colors: {
       'primary-green': '#00BF63',
-      'secondary-green': '#92DEBC',
+      'secondary-green': '#72DEAC',
       'primary-bg': '#EBF0EC',
       'primary-text': '#161616',
       'white': '#FFFFFF'

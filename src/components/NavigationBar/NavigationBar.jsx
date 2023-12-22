@@ -1,9 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import './nav.css'
+import { FaUser } from "react-icons/fa";
 import useAuth from '../../utils/hooks/useAuth';
 
 const NavigationBar = () => {
     const { user, logOut } = useAuth()
+
 
     const navLink = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -11,7 +13,11 @@ const NavigationBar = () => {
         <li><NavLink to='/support'>Support</NavLink></li>
         {
 
-            user ? <li><a><div onClick={logOut} className='px-3 py-1 bg-primary-green text-white hover:bg-secondary-green'>Log out</div></a></li> : <>
+
+            user ? <> <li><a><div onClick={logOut} className='px-3 py-1 bg-primary-green text-white hover:bg-secondary-green'>Log out</div></a></li>
+                <li><a>{user?.photoURL ? <img src={user?.photoURL} className='w-9 p-px rounded-full bg-primary-green' alt="" /> : <FaUser className='w-9 p-px rounded-full bg-primary-green'></FaUser>}</a></li>
+                <li className='flex items-center justify-center'>{user?.displayName}</li>
+            </> : <>
                 <li><NavLink to='/login'><div className='px-3 py-[3px] border border-primary-green'>Login</div></NavLink></li>
                 <li><NavLink to='/register'><div className='px-3 py-1  bg-primary-green text-white hover:bg-secondary-green'>Register</div></NavLink></li>
             </>

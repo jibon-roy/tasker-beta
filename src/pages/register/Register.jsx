@@ -18,6 +18,7 @@ const Register = () => {
         const name = form.name.value
         const email = form.email.value
         const password = form.password.value
+        const photo = form.photoUrl.value
         if (password.length < 6) {
             setPasswordError('Password is less then 6 Character.');
             return;
@@ -38,7 +39,8 @@ const Register = () => {
                 if (result.user) {
                     axiosPublic.post('/createUser', newUser)
                     updateProfile(user, {
-                        displayName: name
+                        displayName: name,
+                        photoURL: photo
                     })
                     Swal.fire({
                         title: "Welcome",
@@ -82,6 +84,10 @@ const Register = () => {
                             <div className="relative mb-4">
                                 <label htmlFor="password" className="leading-7 text-sm text-gray-600">Password</label>
                                 <input required autoComplete="on" type="password" id="password" name="password" className="w-full bg-primary-bg rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-primary-green text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            </div>
+                            <div className="relative mb-4">
+                                <label htmlFor="photoUrl" className="leading-7 text-sm text-gray-600">Photo url</label>
+                                <input required placeholder="Photo url" autoComplete="on" type="url" id="photoUrl" name="photoUrl" className="w-full bg-primary-bg rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-primary-green text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                             </div>
                             <label className="label">
                                 <div className="text-base text-[red]">{passwordError}</div>
