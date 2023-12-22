@@ -1,14 +1,21 @@
 import { NavLink } from 'react-router-dom';
 import './nav.css'
+import useAuth from '../../utils/hooks/useAuth';
 
 const NavigationBar = () => {
+    const { user, logOut } = useAuth()
 
     const navLink = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
         <li><NavLink to='/support'>Support</NavLink></li>
-        <li><NavLink to='/login'><div className='px-3 py-[3px] border border-primary-green'>Login</div></NavLink></li>
-        <li><NavLink to='/register'><div className='px-3 py-1  bg-primary-green text-white hover:bg-secondary-green'>Register</div></NavLink></li>
+        {
+
+            user ? <li><a><div onClick={logOut} className='px-3 py-1 bg-primary-green text-white hover:bg-secondary-green'>Log out</div></a></li> : <>
+                <li><NavLink to='/login'><div className='px-3 py-[3px] border border-primary-green'>Login</div></NavLink></li>
+                <li><NavLink to='/register'><div className='px-3 py-1  bg-primary-green text-white hover:bg-secondary-green'>Register</div></NavLink></li>
+            </>
+        }
     </>
 
     return (

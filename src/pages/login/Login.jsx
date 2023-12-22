@@ -1,10 +1,11 @@
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../utils/hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const { googleUser, loginUser } = useAuth()
-    // console.log(data)
+    const navigate = useNavigate()
 
     const handleLogin = (e) => {
         const form = e.currentTarget
@@ -12,6 +13,26 @@ const Login = () => {
         const password = form.password.value
 
         loginUser(email, password)
+            .then(result => {
+                if (result.user) {
+                    Swal.fire({
+                        title: "Welcome",
+                        text: "Login successful.",
+                        icon: "success"
+                    });
+                    navigate('/', { replace: true })
+                }
+
+            })
+            .catch(err => {
+                if (err) {
+                    Swal.fire({
+                        title: "Something is wrong",
+                        text: "Please try again.",
+                        icon: "error"
+                    });
+                }
+            })
     }
     return (
         <div className="min-h-screen flex justify-center bg-secondary-green">

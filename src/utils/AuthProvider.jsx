@@ -1,13 +1,15 @@
 import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../firebase/auth";
+import useAxiosPublic from "./hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 export const AuthContext = createContext(null)
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true)
-
+    const axiosPublic = useAxiosPublic()
 
     const google = new GoogleAuthProvider();
 
@@ -20,12 +22,25 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, google)
             .then(result => {
                 if (result.user) {
-                    // Do something
+                    const name = result?.user?.displayName;
+                    const email = result?.user?.email;
+                    const newUser = { name, email }
+                    axiosPublic.post('/createUser', newUser)
+                    Swal.fire({
+                        title: "Welcome",
+                        text: "Login successful.",
+                        icon: "success"
+                    });
                 }
+
             })
             .catch(err => {
                 if (err) {
-                    // do something 
+                    Swal.fire({
+                        title: "Something is wrong",
+                        text: "Please try again.",
+                        icon: "error"
+                    });
                 }
             })
     }

@@ -3,6 +3,7 @@ import MainLayout from "../layouts/main/MainLayout";
 import Home from "../pages/home/Home";
 import Register from "../pages/register/Register";
 import Login from "../pages/login/Login";
+import PublicRoute from "./PublicRoute";
 
 
 const router = createBrowserRouter([
@@ -18,11 +19,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/register',
-        element: <Register></Register>
+        element: <PublicRoute><Register></Register></PublicRoute>
     },
     {
         path: '/login',
-        element: <Login></Login>
+        element: <PublicRoute><Login></Login></PublicRoute>
     }
 ])
 
