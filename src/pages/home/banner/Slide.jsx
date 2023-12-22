@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom"
 
 export const Slide1 = () => {
-    return <div className="hero max-md:h-[90vh] bg-primary-green min-h-[60vh]">
+    return <div className="hero max-md:h-[90vh] bg-primary-green min-h-[70vh]">
         <div className="hero-content  text-center">
             <div className="max-w-md">
                 <h1 className="text-3xl font-medium text-white">Hello Everyone</h1>
                 <p className="py-6 text-5xl font-bold">Welcome to</p>
                 <div className="bg-white my-5 shadow-inner rounded-xl">
-                    <img src="/logo.png" alt="" />
+                    <img src="/animation.gif" className="rounded-xl" alt="" />
                 </div>
                 <Link to='/login'>
                     <button className="btn bg-primary-bg">Let’s Explore</button>
@@ -18,7 +18,7 @@ export const Slide1 = () => {
 }
 
 export const Slide2 = () => {
-    return <div className="hero max-md:h-[90vh] min-h-[60vh] bg-primary-green">
+    return <div className="hero max-md:h-[90vh] min-h-[70vh] bg-primary-green">
         <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="bg-white my-5 shadow-inner rounded-xl">
                 <img src="/logo.png" alt="" />
@@ -35,7 +35,7 @@ export const Slide2 = () => {
 }
 
 export const Slide3 = () => {
-    return <div className="hero max-md:h-[90vh] min-h-[60vh] bg-primary-green">
+    return <div className="hero max-md:h-[90vh] min-h-[70vh] bg-primary-green">
         <div className="hero-content flex-col lg:flex-row">
             <div className="bg-white my-5 shadow-inner rounded-xl">
                 <img src="/logo.png" alt="" />

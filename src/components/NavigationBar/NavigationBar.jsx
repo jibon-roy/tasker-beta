@@ -7,8 +7,8 @@ const NavigationBar = () => {
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
         <li><NavLink to='/support'>Support</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
-        <li><NavLink to='/register'><div className='px-3 py-1 bg-primary-green text-white hover:bg-secondary-green'>Register</div></NavLink></li>
+        <li><NavLink to='/login'><div className='px-3 py-[3px] border border-primary-green'>Login</div></NavLink></li>
+        <li><NavLink to='/register'><div className='px-3 py-1  bg-primary-green text-white hover:bg-secondary-green'>Register</div></NavLink></li>
     </>
 
     return (
