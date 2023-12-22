@@ -2,7 +2,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../utils/hooks/useAuth";
 
 
-const PrivetRouter = ({ children }) => {
+const PrivetRoute = ({ children }) => {
 
     const { loading, user } = useAuth();
     const location = useLocation()
@@ -18,4 +18,4 @@ const PrivetRouter = ({ children }) => {
     }
 };
 
-export default PrivetRouter;
+export default PrivetRoute;
